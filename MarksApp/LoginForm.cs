@@ -33,26 +33,45 @@ namespace MarksApp
         {
             var loginUser = loginField.Text;
             var passUser = passField.Text;
+            var userType = "user";
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $"select id_user, login_user, password_user, is_teach from register where login_user = `{loginUser}` and password_user = `{passUser}`";
+            string querystring = $"select id_user, login_user, password_user, userType from register where login_user = '{loginUser}' and password_user = '{passUser}' and userType = ''";
 
             SqlCommand command = new SqlCommand(querystring, database.GetConnection());
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            if (table.Rows.Count == 1)
+            //var user = new CheckUser(table.Rows[0].ItemArray[1].ToString(), Convert.ToBoolean(table.Rows[0].ItemArray[3]));
+
+            //if (table.Rows.Count == 1)
+            //{
+            //    CriteriaForm critForm = new CriteriaForm();
+            //    critForm.Show();
+            //    this.Hide();
+            //}
+
+            if (userType == "teacher")
             {
-                var user = new CheckUser(table.Rows[0].ItemArray[1].ToString(), Convert.ToBoolean(table.Rows[0].ItemArray[3]));
+                ListStudents lStudents = new ListStudents();
+                lStudents.Show();
+                this.Hide();
+            }
+            else if (userType == "user")
+            {
                 CriteriaForm critForm = new CriteriaForm();
                 critForm.Show();
                 this.Hide();
             }
+
             else
-                MessageBox.Show("Такого аккаунта не существует"); 
+            { 
+                MessageBox.Show("Такого аккаунта не существует");
+            }
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

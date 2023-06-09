@@ -54,6 +54,12 @@
       <DependentUpon>CriteriaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
+    <Compile Include="ListStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListStudents.Designer.cs">
+      <DependentUpon>ListStudents.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

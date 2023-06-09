@@ -11,14 +11,7 @@ using System.Data.SqlClient;
 
 namespace MarksApp
 {
-    enum RowState
-    {
-        Existed,
-        New,
-        Modified,
-        ModifiedNew,
-        Deleted,
-    }
+    
     
     public partial class CriteriaForm : Form
     {
@@ -26,7 +19,7 @@ namespace MarksApp
 
         DataBase database = new DataBase();
 
-        int selectedRow;
+        //int selectedRow;
 
         public CriteriaForm()
         {
@@ -43,12 +36,11 @@ namespace MarksApp
             dataGridView1.Columns.Add("criteria", "Критерии");
             dataGridView1.Columns.Add("mark", "Оценка");
             dataGridView1.Columns.Add("selfmark", "Самооценка");
-            dataGridView1.Columns.Add("IsNew", String.Empty);
         }
 
         private void ReadSinglRow(DataGridView dgw, IDataRecord record)
         {
-            dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetInt32(2), record.GetInt32(3), RowState.ModifiedNew);
+            dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.IsDBNull(2), record.IsDBNull(3));
         }
 
         private void RefreshDataGrid(DataGridView dgw)

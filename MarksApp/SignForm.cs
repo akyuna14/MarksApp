@@ -52,8 +52,9 @@ namespace MarksApp
         {
             var loginUser = loginField.Text;
             var passUser = passField.Text;
+            var userType = "";
 
-            string querystring = $"insert into register(login_user, password_user, is_teach) values(`{loginUser}`, `{passUser}`, 0)";
+            string querystring = $"insert into register(login_user, password_user, userType) values(`{loginUser}`, `{passUser}`, 'user')";
 
             SqlCommand command = new SqlCommand(querystring, database.GetConnection());
 
@@ -74,11 +75,12 @@ namespace MarksApp
         {
             var loginUser = loginField.Text;
             var passUser = passField.Text;
+            var userType = "";
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $"select id_user, login_user, password_user, is_teach from Register where login_user=`{loginUser}` and password_user=`{passUser}`";
+            string querystring = $"select id_user, login_user, password_user, userType from register where login_user=`{loginUser}` and password_user=`{passUser}` and userType=`{userType}`";
 
             SqlCommand command = new SqlCommand(querystring, database.GetConnection());
 
