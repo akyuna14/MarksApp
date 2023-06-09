@@ -33,17 +33,17 @@ namespace MarksApp
         {
             var loginUser = loginField.Text;
             var passUser = passField.Text;
-            var userType = "user";
+            var userType = "";
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $"select id_user, login_user, password_user, userType from register where login_user = '{loginUser}' and password_user = '{passUser}' and userType = '{userType}'";
+            //string querystring = $"select id_user, login_user, password_user, userType, FIO from register where login_user = '{loginUser}' and password_user = '{passUser}' and userType = '{userType}'";
 
-            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
+            //SqlCommand command = new SqlCommand(querystring, database.GetConnection());
 
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
+            //adapter.SelectCommand = command;
+            //adapter.Fill(table);
 
             //var user = new CheckUser(table.Rows[0].ItemArray[1].ToString(), Convert.ToBoolean(table.Rows[0].ItemArray[3]));
 
@@ -53,6 +53,25 @@ namespace MarksApp
             //    critForm.Show();
             //    this.Hide();
             //}
+
+            string query = $"select id_user, login_user, password_user, userType from register where login_user = '{loginUser}' and password_user = '{passUser}'";
+            database.openConnection();
+            SqlCommand command1 = new SqlCommand(query, database.GetConnection());
+            //adapter.SelectCommand = command1;
+            //adapter.Fill(table);
+            //command1.Parameters.AddWithValue("@UserId", UserId);
+            SqlDataReader reader = command1.ExecuteReader();
+            if (reader.Read())
+            {
+                loginUser = (string)reader["login_user"];
+                passUser = (string)reader["password_user"];
+                userType = (string)reader["userType"];
+
+                Console.WriteLine($"login User: {loginUser}");
+                Console.WriteLine($"password User: {passUser}");
+                Console.WriteLine($"User Type: {userType}");
+            }
+
 
             if (userType == "teacher")
             {
@@ -68,7 +87,7 @@ namespace MarksApp
             }
 
             else
-            { 
+            {
                 MessageBox.Show("Такого аккаунта не существует");
             }
 
@@ -94,5 +113,8 @@ namespace MarksApp
             picpass2.Visible = true;
             picpass1.Visible = false;
         }
+
+
+        
     }
 }

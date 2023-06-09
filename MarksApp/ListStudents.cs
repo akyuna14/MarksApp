@@ -29,7 +29,6 @@ namespace MarksApp
             dataGridView1.Columns.Add("selfmark", "Самооценка");
         }
 
-        
         private void ReadSinglRow(DataGridView dgw, IDataRecord record)
         {
             dgw.Rows.Add(record.GetInt32(0), record.GetString(4), record.IsDBNull(2), record.IsDBNull(3));
