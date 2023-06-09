@@ -77,6 +77,9 @@
     <EmbeddedResource Include="CriteriaForm.resx">
       <DependentUpon>CriteriaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListStudents.resx">
+      <DependentUpon>ListStudents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

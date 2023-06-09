@@ -36,7 +36,6 @@
             this.passField = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.bEntry = new System.Windows.Forms.Button();
             this.picpass1 = new System.Windows.Forms.PictureBox();
             this.picpass2 = new System.Windows.Forms.PictureBox();
             this.SignUp = new System.Windows.Forms.Button();
@@ -107,13 +106,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Пароль";
             // 
-            // bEntry
-            // 
-            this.bEntry.Location = new System.Drawing.Point(0, 0);
-            this.bEntry.Name = "bEntry";
-            this.bEntry.Size = new System.Drawing.Size(75, 23);
-            this.bEntry.TabIndex = 10;
-            // 
             // picpass1
             // 
             this.picpass1.Image = ((System.Drawing.Image)(resources.GetObject("picpass1.Image")));
@@ -165,7 +157,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.SignUp);
             this.Controls.Add(this.picpass1);
-            this.Controls.Add(this.bEntry);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.passField);
@@ -194,7 +185,6 @@
         private System.Windows.Forms.TextBox passField;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button bEntry;
         private System.Windows.Forms.PictureBox picpass1;
         private System.Windows.Forms.PictureBox picpass2;
         private System.Windows.Forms.Button SignUp;

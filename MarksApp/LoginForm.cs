@@ -38,7 +38,7 @@ namespace MarksApp
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $"select id_user, login_user, password_user, userType from register where login_user = '{loginUser}' and password_user = '{passUser}' and userType = ''";
+            string querystring = $"select id_user, login_user, password_user, userType from register where login_user = '{loginUser}' and password_user = '{passUser}' and userType = '{userType}'";
 
             SqlCommand command = new SqlCommand(querystring, database.GetConnection());
 
