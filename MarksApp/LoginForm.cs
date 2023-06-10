@@ -57,19 +57,13 @@ namespace MarksApp
             string query = $"select id_user, login_user, password_user, userType from register where login_user = '{loginUser}' and password_user = '{passUser}'";
             database.openConnection();
             SqlCommand command1 = new SqlCommand(query, database.GetConnection());
-            //adapter.SelectCommand = command1;
-            //adapter.Fill(table);
-            //command1.Parameters.AddWithValue("@UserId", UserId);
+            
             SqlDataReader reader = command1.ExecuteReader();
             if (reader.Read())
             {
                 loginUser = (string)reader["login_user"];
                 passUser = (string)reader["password_user"];
                 userType = (string)reader["userType"];
-
-                Console.WriteLine($"login User: {loginUser}");
-                Console.WriteLine($"password User: {passUser}");
-                Console.WriteLine($"User Type: {userType}");
             }
 
 
